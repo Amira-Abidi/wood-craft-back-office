@@ -25,7 +25,11 @@ export class ProductsService {
   }
 
   async updateProduct(id: string, data: Partial<Product>): Promise<Product> {
-    return this.productModel.findByIdAndUpdate(id, data, { new: true });
+    const product = await this.productModel.findByIdAndUpdate(id, data, { new: true });
+    if (!product) {
+      throw new NotFoundException(`Product with ID ${id} not found`);
+    }
+    return product;
   }
 
   async deleteProduct(id: string): Promise<void> {
