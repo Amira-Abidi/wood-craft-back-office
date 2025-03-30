@@ -27,7 +27,7 @@ export class EmailService {
   
     const adminMailOptions = {
       from: 'abidiamira709@gmail.com',
-      to: 'abidiamira709@gmail.com', // Admin email address
+      to: 'abidiamira709@gmail.com',
       subject: 'New Order Received',
       text: `A new order has been placed. Details:\n\n` +
             `Name: ${orderDetails.user.fullName}\n` +
@@ -39,9 +39,19 @@ export class EmailService {
             `Total Price: ${orderDetails.totalPrice}`,
     };
   
-    // Send email to user
     await this.transporter.sendMail(userMailOptions);
-    // Send email to admin
     await this.transporter.sendMail(adminMailOptions);
-  }  
+  }
+  
+  async sendMessage(msgDetails: any) {
+ 
+    const adminMailOptions = {
+      from: 'abidiamira709@gmail.com',
+      to: 'abidiamira709@gmail.com',
+      subject: 'Wood Craft Message',
+      text: `Message: ${msgDetails.msg}\n\n` + `Email: ${msgDetails.user}`
+    };
+
+    await this.transporter.sendMail(adminMailOptions);
+  }
 }

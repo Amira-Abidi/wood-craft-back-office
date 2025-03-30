@@ -7,8 +7,6 @@ export class OrdersController {
 
   @Post()
   async createOrder(@Body() orderDetails: any) {
-    // Process the order (save to database, etc.)
-    // Send confirmation emails to both user and admin
     await this.emailService.sendOrderConfirmation(orderDetails);
     return { message: 'Order confirmed and emails sent' };
   }

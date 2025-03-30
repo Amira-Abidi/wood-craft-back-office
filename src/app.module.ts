@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { EmailService } from './email/email.service';
 import { OrdersModule } from './orders/orders.module';
 import { EmailModule } from './email/email.module';
+import { ContactController } from './contact/contact.controller';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { EmailModule } from './email/email.module';
     EmailModule,
     ConfigModule.forRoot(),
   ],
-  controllers: [AppController],
+  controllers: [AppController, ContactController],
   providers: [AppService, EmailService],
 })
 export class AppModule {}
